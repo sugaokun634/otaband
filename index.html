@@ -526,10 +526,10 @@ input[type=range]{width:100%;accent-color:var(--pink)}
             <label style="font-size:11px">担当パート:
               <select id="roomMyPart" style="font-weight:700">
                 <option value="oto">🎵 オタマトーン（メロディ）</option>
+                <option value="pno">🎹 ピアノ</option>
                 <option value="gtr">🎸 ギター</option>
                 <option value="bass">🎻 ベース</option>
                 <option value="drum">🥁 ドラム</option>
-                <option value="pno">🎹 ピアノ</option>
               </select>
             </label>
             <button id="roomTestToneBtn" class="btnSub">🔊 テスト音を鳴らす（マナーモード確認）</button>
@@ -585,7 +585,7 @@ input[type=range]{width:100%;accent-color:var(--pink)}
           </div>
           <div class="edRow">
             <button id="ioAddNewSongBtn" class="btnSub">➕ 新規曲を作成</button>
-            <button id="edRestoreBtn">🔄 初期収録8曲を復元</button>
+            <button id="edRestoreBtn">🔄 初期収録7曲を復元</button>
             <button id="edClearAllBtn" class="btnWarn">⚠️ 全曲を消去（空にする）</button>
             <button id="edDelOneBtn" class="btnWarn" style="display:none">🗑 現在の1曲を削除</button>
           </div>
@@ -898,18 +898,51 @@ function songFromMidi(m, title){
   };
 }
 
-// 収録曲8選
+// 収録曲7選
 const DEFS = [
   {
-    title: "ちょうちょ",
-    info: "★☆☆☆☆ スペイン民謡",
-    bpm: 96,
+    title: "ジングルベル",
+    info: "★★☆☆☆ クリスマスソング",
+    bpm: 120,
     tonic: 0,
     scale: "major",
     drum: "rock",
-    chords: ["C","G","C","C","C","G","C","C"],
-    melody: [[67,1],[64,1],[64,2],[65,1],[62,1],[62,2],[60,1],[62,1],[64,1],[65,1],[67,1],[67,1],[67,2],[67,1],[64,1],[64,1],[64,1],[65,1],[62,1],[62,2],[60,1],[64,1],[67,1],[67,1],[64,1],[64,1],[64,2]],
-    lyrics: ["ちょうちょ ちょうちょ なのはに とまれ","なのはに あきたら さくらに とまれ"]
+    chords: ["C","C","C","C","F","C","D7","G","C","C","C","C","F","C","G7","C"],
+    melody: [[64,1],[64,1],[64,2],[64,1],[64,1],[64,2],[64,1],[67,1],[60,1.5],[62,0.5],[64,4],[65,1],[65,1],[65,1.5],[65,0.5],[65,1],[64,1],[64,1],[64,0.5],[64,0.5],[64,1],[62,1],[62,1],[64,1],[62,2],[67,2],[64,1],[64,1],[64,2],[64,1],[64,1],[64,2],[64,1],[67,1],[60,1.5],[62,0.5],[64,4],[65,1],[65,1],[65,1.5],[65,0.5],[65,1],[64,1],[64,1],[64,0.5],[64,0.5],[67,1],[67,1],[65,1],[62,1],[60,4]],
+    lyrics: ["| C  | C  | C  | C  |","| F  | C  | D7 | G  |","| C  | C  | C  | C  |","| F  | C  | G7 | C  |"]
+  },
+  {
+    title: "もろびとこぞりて",
+    info: "★★★☆☆ クリスマスソング",
+    bpm: 108,
+    tonic: 0,
+    scale: "major",
+    drum: "rock",
+    chords: ["C","G","F","C","C","G","F","C"],
+    melody: [[72,1],[71,0.75],[69,0.25],[67,1.5],[65,0.5],[64,1],[62,1],[60,1.5],[67,0.5],[69,1.5],[69,0.5],[71,1.5],[71,0.5],[72,4],[72,1],[71,0.75],[69,0.25],[67,1.5],[65,0.5],[64,1],[62,1],[60,1.5],[67,0.5],[69,1.5],[69,0.5],[71,1.5],[71,0.5],[72,4]],
+    lyrics: ["| C  | G  | F  | C  |","| C  | G  | F  | C  |"]
+  },
+  {
+    title: "ひいらぎかざろう",
+    info: "★★★☆☆ ウェールズ民謡",
+    bpm: 116,
+    tonic: 0,
+    scale: "major",
+    drum: "rock",
+    chords: ["C","C","G7","C","C","C","G7","C"],
+    melody: [[67,1.5],[65,0.5],[64,1],[62,1],[60,1],[62,1],[64,1],[60,1],[62,0.5],[64,0.5],[65,0.5],[62,0.5],[64,1.5],[62,0.5],[60,1],[59,1],[60,2],[67,1.5],[65,0.5],[64,1],[62,1],[60,1],[62,1],[64,1],[60,1],[62,0.5],[64,0.5],[65,0.5],[62,0.5],[64,1.5],[62,0.5],[60,1],[59,1],[60,2]],
+    lyrics: ["| C  | C  | G7 | C  |","| C  | C  | G7 | C  |"]
+  },
+  {
+    title: "あらののはてに",
+    info: "★★★☆☆ フランスキャロル",
+    bpm: 112,
+    tonic: 0,
+    scale: "major",
+    drum: "rock",
+    chords: ["C","G","C","G","C","F","G","C","C","G","F","G","C","F","G","C"],
+    melody: [[64,1],[64,1],[64,1],[67,1],[67,1.5],[65,0.5],[64,2],[64,1],[62,1],[64,1],[67,1],[64,1.5],[62,0.5],[60,2],[64,1],[64,1],[64,1],[67,1],[67,1.5],[65,0.5],[64,2],[64,1],[62,1],[64,1],[67,1],[64,1.5],[62,0.5],[60,2],[67,2],[69,0.5],[67,0.5],[65,0.5],[64,0.5],[65,2],[67,0.5],[65,0.5],[64,0.5],[62,0.5],[64,2],[65,0.5],[64,0.5],[62,0.5],[60,0.5],[62,1.5],[55,0.5],[55,2],[60,1],[62,1],[64,1],[65,1],[64,2],[62,2],[60,4]],
+    lyrics: ["| C  | G  | C  | G  |","| C  | F  | G  | C  |","| C  | G  | F  | G  |","| C  | F  | G  | C  |"]
   },
   {
     title: "きらきら星",
@@ -920,18 +953,7 @@ const DEFS = [
     drum: "rock",
     chords: ["C","F","C","G","C","G","C","G","C","F","C","C"],
     melody: [[60,1],[60,1],[67,1],[67,1],[69,1],[69,1],[67,2],[65,1],[65,1],[64,1],[64,1],[62,1],[62,1],[60,2],[67,1],[67,1],[65,1],[65,1],[64,1],[64,1],[62,2],[67,1],[67,1],[65,1],[65,1],[64,1],[64,1],[62,2],[60,1],[60,1],[67,1],[67,1],[69,1],[69,1],[67,2],[65,1],[65,1],[64,1],[64,1],[62,1],[62,1],[60,2]],
-    lyrics: ["きらきら ひかる","おそらの ほしよ","まばたき しては","みんなを みてる","きらきら ひかる","おそらの ほしよ"]
-  },
-  {
-    title: "メリーさんのひつじ",
-    info: "★★☆☆☆ アメリカ民謡",
-    bpm: 104,
-    tonic: 0,
-    scale: "major",
-    drum: "rock",
-    chords: ["C","C","G","C","C","C","G","C"],
-    melody: [[64,1.5],[62,0.5],[60,1],[62,1],[64,1],[64,1],[64,2],[62,1],[62,1],[62,2],[64,1],[67,1],[67,2],[64,1.5],[62,0.5],[60,1],[62,1],[64,1],[64,1],[64,1],[64,1],[62,1],[62,1],[64,1],[62,1],[60,4]],
-    lyrics: ["メリーさんの ひつじ メエメエ ひつじ","メリーさんの ひつじ かわいいな"]
+    lyrics: ["| C  | F  | C  | G  |","| C  | G  | C  | G  |","| C  | F  | C  | C  |"]
   },
   {
     title: "歓喜の歌（第九）",
@@ -942,40 +964,7 @@ const DEFS = [
     drum: "rock",
     chords: ["C","G","C","G","C","G","C","C"],
     melody: [[64,1],[64,1],[65,1],[67,1],[67,1],[65,1],[64,1],[62,1],[60,1],[60,1],[62,1],[64,1],[64,1.5],[62,0.5],[62,2],[64,1],[64,1],[65,1],[67,1],[67,1],[65,1],[64,1],[62,1],[60,1],[60,1],[62,1],[64,1],[62,1.5],[60,0.5],[60,2]],
-    lyrics: ["はるかな そらへ ひびけよ よろこび","こころを ひとつに うたおう ともに"]
-  },
-  {
-    title: "ロンドン橋",
-    info: "★★★☆☆ イギリス民謡",
-    bpm: 112,
-    tonic: 0,
-    scale: "major",
-    drum: "rock",
-    chords: ["C","C","G","C","C","C","G","C"],
-    melody: [[67,1.5],[69,0.5],[67,1],[65,1],[64,1],[65,1],[67,2],[62,1],[64,1],[65,2],[64,1],[65,1],[67,2],[67,1.5],[69,0.5],[67,1],[65,1],[64,1],[65,1],[67,2],[62,2],[67,2],[64,1],[60,3]],
-    lyrics: ["ロンドンばし おちる おちる おちる","ロンドンばし おちる マイフェアレディ"]
-  },
-  {
-    title: "チューリップ",
-    info: "★★★☆☆ 日本の童謡",
-    bpm: 96,
-    tonic: 0,
-    scale: "major",
-    drum: "rock",
-    chords: ["C","C","G","C","C","C","G","C","C","G","C"],
-    melody: [[60,1],[62,1],[64,2],[60,1],[62,1],[64,2],[67,1],[64,1],[62,1],[60,1],[62,1],[64,1],[62,2],[60,1],[62,1],[64,2],[60,1],[62,1],[64,2],[67,1],[64,1],[62,1],[60,1],[62,1],[64,1],[60,2],[67,0.5],[67,0.5],[64,0.5],[67,0.5],[69,0.5],[69,0.5],[67,1],[64,0.5],[64,0.5],[62,0.5],[62,0.5],[60,2]],
-    lyrics: ["さいた さいた チューリップの はなが","ならんだ ならんだ あか しろ きいろ","どの花 みても きれいだな"]
-  },
-  {
-    title: "かえるの合唱",
-    info: "★★★☆☆ ドイツ民謡",
-    bpm: 108,
-    tonic: 0,
-    scale: "major",
-    drum: "rock",
-    chords: ["C","G","C","G","C","C","G","C"],
-    melody: [[60,1],[62,1],[64,1],[65,1],[64,1],[62,1],[60,2],[64,1],[65,1],[67,1],[69,1],[67,1],[65,1],[64,2],[60,2],[60,2],[60,2],[60,2],[60,0.5],[60,0.5],[62,0.5],[62,0.5],[64,0.5],[64,0.5],[65,0.5],[65,0.5],[64,1],[62,1],[60,2]],
-    lyrics: ["かえるの うたが きこえて くるよ","クワッ クワッ クワッ クワッ ケロケロケロケロ クワックワックワッ"]
+    lyrics: ["| C  | G  | C  | G  |","| C  | G  | C  | C  |"]
   },
   {
     title: "オタバンド",
@@ -986,7 +975,7 @@ const DEFS = [
     drum: "rock",
     chords: ["C","G","Am","Em","F","C","Dm","G7","C"],
     melody: [[69,0.5],[69,0.5],[69,1],[69,0.5],[69,0.5],[69,0.5],[69,0.5],[67,0.5],[67,0.5],[67,0.5],[67,0.5],[69,0.5],[67,0.5],[0,0.5],[0,0.5],[65,0.5],[65,0.5],[65,0.5],[65,1],[65,0.5],[62,0.5],[65,0.5],[67,0.5],[67,0.5],[67,0.5],[67,0.5],[69,0.5],[67,0.5],[0,0.5],[0,0.5],[69,0.5],[69,0.5],[69,1],[69,0.5],[69,0.5],[69,0.5],[69,0.5],[67,0.5],[67,0.5],[67,0.5],[67,0.5],[69,0.5],[67,0.5],[0,0.5],[0,0.5],[65,0.5],[65,0.5],[65,0.5],[65,1],[65,0.5],[62,0.5],[65,0.5],[67,0.5],[67,0.5],[67,0.5],[67,0.5],[69,0.5],[67,0.5],[0,0.5],[64,0.5],[65,0.5],[0,0.5],[0,0.5],[0,0.5],[0,0.5],[0,0.5],[0,0.5],[0,0.5]],
-    lyrics: ["みんなで合奏　オタマトーン","ピアノ　ギターに　ベースにドラム","スマホでかんたん　演奏できる","だれが一番　うまくひける","かな？"]
+    lyrics: ["みんなで合奏 オタマトーン","ピアノ ギターに ベースにドラム","スマホでかんたん 演奏できる","だれが一番 うまくひける","かな？"]
   }
 ];
 </script>
@@ -1026,10 +1015,10 @@ const el = (tag, cls, txt) => {
 
 const PARTS = [
   {id:'oto', nm:'オタマトーン', sn:'オタマ', ic:'🎵'},
+  {id:'pno', nm:'ピアノ', sn:'ピアノ', ic:'🎹'},
   {id:'gtr', nm:'ギター', sn:'ギター', ic:'🎸'},
   {id:'bass', nm:'ベース', sn:'ベース', ic:'🎻'},
-  {id:'drum', nm:'ドラム', sn:'ドラム', ic:'🥁'},
-  {id:'pno', nm:'ピアノ', sn:'ピアノ', ic:'🎹'}
+  {id:'drum', nm:'ドラム', sn:'ドラム', ic:'🥁'}
 ];
 const DRUMK = ['k','s','h','o','t','c'];
 const DRUM_NAMES = {k:'キック', s:'スネア', h:'ハイハット', o:'オープンHH', t:'タム', c:'シンバル'};
@@ -3260,13 +3249,15 @@ $('#freeBtn').onclick = () => {
     : '▶ スタートを押すか、下の楽器をタッチして演奏しよう！';
 };
 
-$('#waitBtn').onclick = () => {
-  waitMode = !waitMode;
+function setWaitMode(val){
+  waitMode = !!val;
   if(!waitMode && waitingNote) resumeFromWaitNote();
   const b = $('#waitBtn');
   b.classList.toggle('on', waitMode);
   b.textContent = waitMode ? '⏸ 待ち:ON' : '▶ 待ち:OFF';
-};
+}
+
+$('#waitBtn').onclick = () => setWaitMode(!waitMode);
 
 $('#loopBtn').onclick = () => {
   loopMode = loopMode === 'next' ? 'loop' : loopMode === 'loop' ? 'once' : 'next';
@@ -4066,8 +4057,10 @@ window._setEnsembleRoleState = (role, boost) => {
 window._getEnsembleRole = () => ensembleRole;
 window._getSubBoost = () => subBoost;
 window._setPartVolumeUI = setPartVolumeUI;
+window._setWaitMode = setWaitMode;
 window._playCalibrationTone = playCalibrationTone;
 window._applyRemoteStart = (sIdx, beatPos) => {
+  setWaitMode(false);
   if(sIdx != null && sIdx !== baseIdx && bases[sIdx]){
     baseIdx = sIdx;
     $('#song').value = baseIdx;
@@ -4080,6 +4073,7 @@ window._applyRemoteStart = (sIdx, beatPos) => {
   }
 };
 window._applyRemoteSeek = (sIdx, beatPos, lN) => {
+  setWaitMode(false);
   if(sIdx != null && sIdx !== baseIdx && bases[sIdx]){
     baseIdx = sIdx;
     $('#song').value = baseIdx;
@@ -4159,8 +4153,9 @@ function applyEnsembleRole(role){
   }else if(role === 'host'){
     roleBadgeEl.textContent = '現在：👑 親機モード（会場アンプ出力＋マイク自動調整）';
     window._setEnsembleRoleState('host', 1.0);
+    if(window._setWaitMode) window._setWaitMode(false);
     PARTS.forEach(p => toggleMan(p.id, false));
-    showRoomAlert('👑 親機モード：全パートを会場アンプへ出力します。子機が揃ったら「🎙 マイクで全子機の音量を自動測定＆調整」を押してください。', true);
+    showRoomAlert('👑 親機モード：全パートを会場アンプへ出力します（自動で待ち:OFF）。子機が揃ったら「🎙 マイクで全子機の音量を自動測定＆調整」を押してください。', true);
   }else if(role === 'sub'){
     const myPart = document.getElementById('roomMyPart').value || window._getInsId();
     roleBadgeEl.textContent = `現在：📱 子機モード（自分の担当「${PARTS.find(p => p.id === myPart).sn}」のみ出力）`;
@@ -4168,9 +4163,7 @@ function applyEnsembleRole(role){
     window._setEnsembleRoleState('sub', curSubBoost);
     subBoostLbl.textContent = `出力ゲイン: ${Math.round(curSubBoost * 100)}%`;
 
-    if(waitMode){
-      document.getElementById('waitBtn').click();
-    }
+    if(window._setWaitMode) window._setWaitMode(false);
     const idx = PARTS.findIndex(p => p.id === myPart);
     if(idx >= 0 && document.getElementById('tabs').children[idx]){
       document.getElementById('tabs').children[idx].click();
@@ -4208,7 +4201,7 @@ document.getElementById('roomTestToneBtn').onclick = () => {
 document.getElementById('roomAutoPartBtn').onclick = () => {
   const used = new Set();
   roomMembers.forEach(m => { if(m.id !== myClientId && m.role === 'sub') used.add(m.part); });
-  const order = ['oto','drum','bass','gtr','pno'];
+  const order = ['oto','pno','gtr','bass','drum'];
   const pick = order.find(p => !used.has(p)) || order[Math.floor(Math.random() * order.length)];
   document.getElementById('roomMyPart').value = pick;
   document.getElementById('roomMyPart').dispatchEvent(new Event('change'));
@@ -4702,6 +4695,7 @@ function initP2PRoom(code){
 
 async function joinRoom(code){
   curRoom = String(code || '7777').trim();
+  if(window._setWaitMode) window._setWaitMode(false);
   if(unsubRoom){ unsubRoom(); unsubRoom = null; }
   if(unsubMembers){ unsubMembers(); unsubMembers = null; }
   if(bcChannel){ bcChannel.close(); bcChannel = null; }
@@ -4749,6 +4743,7 @@ document.getElementById('roomJoinBtn').onclick = () => {
 };
 
 document.getElementById('roomSyncStartBtn').onclick = async () => {
+  if(window._setWaitMode) window._setWaitMode(false);
   const c = document.getElementById('roomCode').value || '7777';
   if(!curRoom) await joinRoom(c);
   sendRoomCommand({
@@ -4761,6 +4756,7 @@ document.getElementById('roomSyncStartBtn').onclick = async () => {
 };
 
 document.getElementById('roomSyncPosBtn').onclick = async () => {
+  if(window._setWaitMode) window._setWaitMode(false);
   const c = document.getElementById('roomCode').value || '7777';
   if(!curRoom) await joinRoom(c);
   const bPos = Math.max(0, window._getCurBeat());
